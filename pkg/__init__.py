@@ -153,7 +153,7 @@ import telnetlib
 import tempfile
 import test
 import textwrap
-import this
+# import this
 import threading
 import timeit
 import tokenize
@@ -182,8 +182,30 @@ import zipapp
 import zipfile
 
 """
-Fancy stuff
+From-imports
 """
-import os
 from os import path
 from os.path import basename
+
+"""
+Reference stuff inside packages
+"""
+def argparse_example():
+    parser = argparse.ArgumentParser(description='ddd')
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('integers', metavar='N', type=int, nargs='+',
+                        help='an integer for the accumulator')
+    parser.add_argument('--sum', dest='accumulate', action='store_const',
+                        const=sum, default=max,
+                        help='sum the integers (default: find the max)')
+
+    args = parser.parse_args()
+    print(args.accumulate(args.integers))
+
+from datetime import timedelta
+def datetime_example():
+    year = timedelta(days=365)
+
+def os_example():
+    os.path.commonprefix(['/usr/lib', '/usr/local/lib'])
+    os.path.commonpath(['/usr/lib', '/usr/local/lib'])
